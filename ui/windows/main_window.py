@@ -2,8 +2,9 @@ import os
 import sys
 import logging
 from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsBlurEffect
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QGraphicsBlurEffect, QLabel, QSpacerItem, QSizePolicy
 from PyQt6.QtSvgWidgets import QSvgWidget
+from PyQt6.QtGui import QFontDatabase, QFont
 from typing import Optional
 from configparser import ConfigParser
 from ..widgets.custom_button import CustomButton
@@ -34,6 +35,15 @@ class MainWindow(QWidget):
         self._layout.setSpacing(BUTTON_SPACING)
         self._layout.setContentsMargins(5, 5, 5, 5)
         self.setLayout(self._layout)
+        # Load JetBrains Mono NL Thin font
+        font_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "assets", "fonts", "JetBrainsMonoNL-Thin.ttf")
+        self.jetbrains_font_id = QFontDatabase.addApplicationFont(font_path)
+        if self.jetbrains_font_id == -1:
+            logger.warning(f"Could not load JetBrains Mono NL Thin font from {font_path}")
+            self.jetbrains_font_family = None
+        else:
+            families = QFontDatabase.applicationFontFamilies(self.jetbrains_font_id)
+            self.jetbrains_font_family = families[0] if families else None
         try:
             self.config = Config.load()
         except Exception as e:
@@ -108,6 +118,26 @@ class MainWindow(QWidget):
             btn.clicked.connect(self._make_command_callback(btn_cfg.command))
             if layout is not None:
                 layout.addWidget(btn)
+
+        # Add spacing above the quote for separation
+        layout.addSpacerItem(QSpacerItem(10, 18, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed))
+
+        # Add the quote label centered below all buttons
+        quote = 'Et in tenebris codicem inveni lucem'  # - Fredon
+        quote_label = QLabel(f"{quote}  – Fredon")
+        quote_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+        # Set JetBrains Mono NL Thin font if available
+        if hasattr(self, "jetbrains_font_family") and self.jetbrains_font_family:
+            font = QFont(self.jetbrains_font_family, 16)
+            font.setWeight(QFont.Weight.Thin)
+            quote_label.setFont(font)
+        else:
+            # Fallback to monospace thin
+            font = QFont("monospace", 16)
+            font.setWeight(QFont.Weight.Thin)
+            quote_label.setFont(font)
+        quote_label.setStyleSheet("color: #888; margin-top: 8px;")
+        layout.addWidget(quote_label, alignment=Qt.AlignmentFlag.AlignHCenter)
 
     def _make_show_submenu_callback(self, category_name):
         return lambda checked=False, c=category_name: self.showSubMenu(c)
