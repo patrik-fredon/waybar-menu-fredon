@@ -23,7 +23,7 @@ class CustomButton(QPushButton):
 				border-radius: 10px;
 				text-align: center;
 				font-size: 16px;
-                font-family: JetBrains Mono NL ExtraBold;
+                font-family: InputSerif Nerd Font;
 			}
 			QPushButton:hover {
 				background-color: rgba(0, 4, 2, 0.4);

@@ -174,7 +174,7 @@ class MainWindow(QWidget):
         layout = self._layout
         if layout is None or not self.config:
             return
-        back_btn = CustomButton(" Back", "")
+        back_btn = CustomButton("⇦ Back", "")
         back_btn.clicked.connect(self.showMainMenu)
         if layout is not None:
             layout.addWidget(back_btn)
@@ -199,7 +199,7 @@ class MainWindow(QWidget):
                 first_widget = first_item.widget() if first_item else None
                 if (
                     isinstance(first_widget, CustomButton)
-                    and first_widget.text() == " Back"
+                    and first_widget.text() == "⇦ Back"
                 ):
                     self.showMainMenu()
                     return

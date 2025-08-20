@@ -1,8 +1,5 @@
-ui/__pycache__/constants.cpython-313.pyc
-ui/windows/__pycache__/main_window.cpython-313.pyc
-ui/windows/__pycache__/main_window.cpython-313.pyc
-ui/__pycache__/constants.cpython-313.pyc
+ui/__pycache__/*
 /.venv/
-/__pycache__/
+/__pycache__/**/*/
+/__pycache__/*
 /uv.lock
-ui/widgets/__pycache__/custom_button.cpython-313.pyc
