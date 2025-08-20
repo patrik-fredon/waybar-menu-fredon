@@ -17,24 +17,27 @@ class CustomButton(QPushButton):
         self.setStyleSheet(
             """
 			QPushButton {
-				background-color: rgba(0, 3, 0, 0.5);
+				background-color: rgba(0, 3, 0, 0.6);
 				color: white;
-				border: none;
+				border: 1px solid rgba(150, 150, 150, 0.5);
 				border-radius: 10px;
-				padding: 5px;
 				text-align: center;
-				font-size: 14px;
+				font-size: 16px;
+                font-family: JetBrains Mono NL ExtraBold;
 			}
 			QPushButton:hover {
-				background-color: rgba(0, 0, 20, 0.6);
+				background-color: rgba(0, 4, 2, 0.4);
+                color: rgba(250, 0, 10, 0.5);
+                border: 1px solid rgba(250, 0, 10, 0.3);
 			}
 			QPushButton:pressed {
-				background-color: rgba(80, 84, 92, 0.9);
+                color: rgba(250, 0, 10, 0.5);
+                border: 1px solid rgba(250, 0, 10, 0.3);
 			}
 			"""
         )
         shadow = QGraphicsDropShadowEffect(self)
-        shadow.setBlurRadius(10)
+        shadow.setBlurRadius(30)
         shadow.setColor(QColor(0, 0, 0, 150))
-        shadow.setOffset(0, 4)
+        shadow.setOffset(2, 4)
         self.setGraphicsEffect(shadow)

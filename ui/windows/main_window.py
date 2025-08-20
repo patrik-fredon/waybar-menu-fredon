@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 from PyQt6.QtCore import Qt
@@ -31,7 +32,7 @@ class MainWindow(QWidget):
         self.centerWindow()
         self._layout = QVBoxLayout()
         self._layout.setSpacing(BUTTON_SPACING)
-        self._layout.setContentsMargins(10, 10, 10, 10)
+        self._layout.setContentsMargins(5, 5, 5, 5)
         self.setLayout(self._layout)
         try:
             self.config = Config.load()
@@ -41,12 +42,10 @@ class MainWindow(QWidget):
         self.showMainMenu()
         background = QWidget(self)
         background.setObjectName("blurBackground")
-        background.setStyleSheet(
-            "#blurBackground { background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; }"
-        )
+
         background.setGeometry(self.rect())
         blur = QGraphicsBlurEffect(background)
-        blur.setBlurRadius(10)
+        blur.setBlurRadius(20)
         background.setGraphicsEffect(blur)
         background.lower()
 
@@ -73,13 +72,17 @@ class MainWindow(QWidget):
         layout = self._layout
         if layout is None or not self.config:
             return
-        # Add favicon.svg as a centered SVG widget above the buttons
-        svg_path = "assets/icons/favicon.svg"
+        # Get the script's directory (ui/windows/)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Go up two levels to project root, then into assets/icons/
+        project_root = os.path.dirname(os.path.dirname(script_dir))
+        svg_path = os.path.join(project_root, "assets", "icons", "favicon.svg")
+
         svg_widget = QSvgWidget(svg_path)
         # Set width to match button width, height to keep aspect ratio (e.g. 64x64 or 72x72)
         button_width = 200  # Adjust as needed or import from constants
         svg_widget.setFixedWidth(button_width)
-        svg_widget.setFixedHeight(150)
+        svg_widget.setFixedHeight(160)
         svg_widget.setStyleSheet("background: transparent;")
         layout.addWidget(svg_widget, alignment=Qt.AlignmentFlag.AlignHCenter)
 

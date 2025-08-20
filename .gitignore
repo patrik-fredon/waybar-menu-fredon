@@ -5,3 +5,4 @@ ui/__pycache__/constants.cpython-313.pyc
 /.venv/
 /__pycache__/
 /uv.lock
+ui/widgets/__pycache__/custom_button.cpython-313.pyc
