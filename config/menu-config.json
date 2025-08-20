@@ -1,0 +1,103 @@
+{
+  "categories": [
+    {
+      "name": "System",
+      "icon": "/usr/share/icons/Papirus/48x48/apps/system-file-manager.svg",
+      "description": "System tools and settings"
+    },
+    {
+      "name": "Internet",
+      "icon": "/usr/share/icons/Surfn/128@2x/apps/abrowser.svg",
+      "description": "Internet and network apps"
+    },
+    {
+      "name": "Development",
+      "icon": "/usr/share/icons/Surfn/128@2x/apps/devpod.svg",
+      "description": "Development apps"
+    }
+  ],
+  "buttons": [
+    {
+      "name": "Terminal",
+      "icon": "/usr/share/icons/Papirus/48x48/apps/terminal.svg",
+      "command": "kitty",
+      "description": "Open terminal emulator",
+      "category": "System"
+    },
+    {
+      "name": "Bitwarden",
+      "icon": "/usr/share/icons/Papirus/48x48/apps/bitwarden.svg",
+      "command": "kitty goldwarden-gui",
+      "description": "Open Bitwarden password manager",
+      "category": "System"
+    },
+    {
+      "name": "File Manager",
+      "icon": "/usr/share/icons/Papirus/48x48/apps/system-file-manager.svg",
+      "command": "nautilus",
+      "description": "Open file manager",
+      "category": "System"
+    },
+    {
+      "name": "Wifi Settings",
+      "icon": "/usr/share/icons/Papirus/128x128/apps/fern-wifi-cracker.svg",
+      "command": "kitty nmtui",
+      "description": "System settings",
+      "category": "System"
+    },
+    {
+      "name": "Browser",
+      "icon": "/usr/share/icons/Papirus/128x128/apps/zenmap.svg",
+      "command": "zen-browser",
+      "description": "Launch web browser",
+      "category": "Internet"
+    },
+    {
+      "name": "Github",
+      "icon": "/usr/share/icons/Papirus/128x128/apps/github-desktop.svg",
+      "command": "zen-browser https://github.com",
+      "description": "Github land page",
+      "category": "Internet"
+    },
+    {
+      "name": "Config",
+      "icon": "/usr/share/icons/Papirus/48x48/apps/configurator.svg",
+      "command": "kitty micro \"/home/fredon/github/fredon-archlinux-hyprland/config/menu-config.json\"",
+      "description": "Open notes app"
+    },
+    {
+      "name": "Docker",
+      "icon": "/usr/share/icons/Papirus/128x128/apps/docker-desktop.svg",
+      "command": "kitty lazydocker",
+      "description": "Github land page",
+      "category": "Development"
+    },
+    {
+      "name": "Sublime Text",
+      "icon": "/usr/share/icons/Surfn/128@2x/apps/sublime.svg",
+      "command": "/opt/sublime_text/sublime_text --new-window",
+      "description": "Sublime text editor",
+      "category": "Development"
+    },
+    {
+      "name": "Bitwarden",
+      "icon": "/usr/share/icons/Surfn/128@2x/apps/bitwarden.svg",
+      "command": "uwsm app -- /home/fredon/Downloads/Bitwarden-2025.7.0-x86_64.AppImage",
+      "description": "Password application to secure store password behind auth",
+      "category": "Development"
+    },
+    {
+      "name": "System Monitoring",
+      "icon": "/usr/share/icons/Papirus/128x128/apps/utilities-system-monitor.svg",
+      "command": "kitty btop",
+      "description": "System Monitoring - BTOP",
+      "category": "Development"
+    },
+    {
+      "name": "Power",
+      "icon": "/usr/share/icons/Papirus-Light/48x48/apps/preferences-system-power-management.svg",
+      "command": "sh /home/fredon/dotfiles/scripts/.local/bin/fredon-menu-power",
+      "description": "Power management"
+    }
+  ]
+}
